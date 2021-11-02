@@ -33,7 +33,6 @@ class ProtectLoc() {
     private val levelThreeLoc = ArrayList<Triple<Int,Int,Int>>()
     private val levelFourLoc = ArrayList<Triple<Int,Int,Int>>()
     var allowPlayers = ArrayList<UUID>()
-    private var beaconBlockType = Material.IRON_BLOCK
     var beaconLoc = Triple(0,0,0)
     private var success = true
 
@@ -44,7 +43,7 @@ class ProtectLoc() {
         var z = beaconLoc.third-1
         for (loc in 1..9){
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
-            if (isBeaconBlock(type)){
+            if (!isBeaconBlock(type)){
                 success = false
                 return
             }
@@ -62,7 +61,7 @@ class ProtectLoc() {
         z = beaconLoc.third-2
         for (loc in 1..25){
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
-            if (isBeaconBlock(type)){
+            if (!isBeaconBlock(type)){
                 levelTwoLoc.clear()
                 return
             }
@@ -81,7 +80,7 @@ class ProtectLoc() {
         z = beaconLoc.third-3
         for (loc in 1..49){
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
-            if (isBeaconBlock(type)){
+            if (!isBeaconBlock(type)){
                 levelThreeLoc.clear()
                 return
             }
@@ -100,7 +99,7 @@ class ProtectLoc() {
         z = beaconLoc.third-4
         for (loc in 1..81){
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
-            if (isBeaconBlock(type)){
+            if (!isBeaconBlock(type)){
                 levelFourLoc.clear()
                 return
             }
