@@ -64,7 +64,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (isBeaconBlock(type)){
                 levelTwoLoc.clear()
-                break
+                return
             }
             levelTwoLoc.add(Triple(x,y,z))
             z += 1
@@ -83,7 +83,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (isBeaconBlock(type)){
                 levelThreeLoc.clear()
-                break
+                return
             }
             levelThreeLoc.add(Triple(x,y,z))
             z += 1
@@ -102,7 +102,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (isBeaconBlock(type)){
                 levelFourLoc.clear()
-                break
+                return
             }
             levelFourLoc.add(Triple(x,y,z))
             z += 1
