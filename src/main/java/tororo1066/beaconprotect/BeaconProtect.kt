@@ -137,4 +137,5 @@ class ProtectLoc() {
     fun isSuccess(): Boolean {
         return success
     }
+
 }
