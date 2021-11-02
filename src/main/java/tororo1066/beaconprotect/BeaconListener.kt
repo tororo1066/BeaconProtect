@@ -74,33 +74,19 @@ object BeaconListener : Listener {
         }
     }
 
-    @EventHandler
-    fun onFade(e : BlockFadeEvent){
-        if (!BeaconProtect.pluginEnable)return
-        val type = e.block.type
-        if (type != Material.IRON_BLOCK && type != Material.GOLD_BLOCK && type != Material.DIAMOND_BLOCK && type != Material.EMERALD_BLOCK && type != Material.NETHERITE_BLOCK && type != Material.BEACON)return
-        for (list in BeaconProtect.protectLocations){
-            for (loc in list.value){
-                if (loc.isProtected(e.block.location)){
-                    e.isCancelled = true
-                    return
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    fun onExplosive(e : EntityExplodeEvent){
-        if (!BeaconProtect.pluginEnable)return
-        for (list in BeaconProtect.protectLocations){
-            for (loc in list.value){
-                for (block in e.blockList()){
-                    if (loc.isProtected(block.location)){
-                        e.isCancelled = true
-                    }
-                }
-            }
-        }
-
-    }
+    //保留
+    //@EventHandler
+    //    fun onExplosive(e : EntityExplodeEvent){
+    //        if (!BeaconProtect.pluginEnable)return
+    //        for (list in BeaconProtect.protectLocations){
+    //            for (loc in list.value){
+    //                for (block in e.blockList()){
+    //                    if (loc.isProtected(block.location)){
+    //                        e.isCancelled = true
+    //                    }
+    //                }
+    //            }
+    //        }
+    //
+    //    }
 }
