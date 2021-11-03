@@ -15,7 +15,7 @@ object BeaconCommands : CommandExecutor, @Nullable TabCompleter {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.isNullOrEmpty()){
-            sender.sendMessage("§b=========================BeaconProtect========================")
+            sender.sendMessage("§b=========================BeaconProtect========Version:1.0====")
 
             sender.sendMessage("§eビーコンは置くことで土台ごと保護できます")
             sender.sendMessage("§e保護はビーコン、土台を壊すことで消せます")
@@ -34,7 +34,7 @@ object BeaconCommands : CommandExecutor, @Nullable TabCompleter {
                 sender.sendMessage("§1/beacon clear §a保護を全削除します")
             }
 
-            sender.sendMessage("§b==Author:tororo_1066======BeaconProtect=============Version:1.0==")
+            sender.sendMessage("§b========================BeaconProtect===Author:tororo_1066====")
             return true
         }
 

@@ -65,6 +65,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (!isBeaconBlock(type)){
                 levelTwoLoc.clear()
+                isNotDumped()
                 return
             }
             levelTwoLoc.add(Triple(x,y,z))
@@ -84,6 +85,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (!isBeaconBlock(type)){
                 levelThreeLoc.clear()
+                isNotDumped()
                 return
             }
             levelThreeLoc.add(Triple(x,y,z))
@@ -103,6 +105,7 @@ class ProtectLoc() {
             val type = Location(world,x.toDouble(),y.toDouble(),z.toDouble()).block.type
             if (!isBeaconBlock(type)){
                 levelFourLoc.clear()
+                isNotDumped()
                 return
             }
             levelFourLoc.add(Triple(x,y,z))
@@ -113,6 +116,8 @@ class ProtectLoc() {
             }
 
         }
+
+        isNotDumped()
     }
 
     fun isProtected(loc : Location): Boolean {
@@ -130,6 +135,20 @@ class ProtectLoc() {
 
     fun isSuccess(): Boolean {
         return success
+    }
+
+    private fun isNotDumped(){
+        for (loc in BeaconProtect.protectLocations){
+            for (list in loc.value){
+                for (protectLoc in levelOneLoc.apply { addAll(levelTwoLoc) }.apply { addAll(levelThreeLoc) }.apply { addAll(levelFourLoc) }){
+                    if (list.isProtected(Location(world, protectLoc.first.toDouble(), protectLoc.second.toDouble(),
+                            protectLoc.third.toDouble()))){
+                        success = false
+                        return
+                    }
+                }
+            }
+        }
     }
 
 }
