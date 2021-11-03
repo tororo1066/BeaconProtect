@@ -34,7 +34,7 @@ object BeaconCommands : CommandExecutor, @Nullable TabCompleter {
                 sender.sendMessage("§1/beacon clear §a保護を全削除します")
             }
 
-            sender.sendMessage("§b=========================BeaconProtect=========================")
+            sender.sendMessage("§b==Author:tororo_1066======BeaconProtect=============Version:1.0==")
             return true
         }
 

@@ -83,6 +83,7 @@ object BeaconListener : Listener {
     //                for (block in e.blockList()){
     //                    if (loc.isProtected(block.location)){
     //                        e.isCancelled = true
+    //                        return
     //                    }
     //                }
     //            }

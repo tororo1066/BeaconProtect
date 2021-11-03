@@ -32,12 +32,14 @@ class ProtectLoc() {
     private val levelTwoLoc = ArrayList<Triple<Int,Int,Int>>()
     private val levelThreeLoc = ArrayList<Triple<Int,Int,Int>>()
     private val levelFourLoc = ArrayList<Triple<Int,Int,Int>>()
+    private lateinit var world : World
     var allowPlayers = ArrayList<UUID>()
     var beaconLoc = Triple(0,0,0)
     private var success = true
 
     constructor(world : World, beaconLoc : Triple<Int,Int,Int>) : this() {
         this.beaconLoc = beaconLoc
+        this.world = world
         var x = beaconLoc.first-1
         var y = beaconLoc.second-1
         var z = beaconLoc.third-1
@@ -115,7 +117,7 @@ class ProtectLoc() {
 
     fun isProtected(loc : Location): Boolean {
         val triple = Triple(loc.blockX,loc.blockY,loc.blockZ)
-        return levelOneLoc.contains(triple) || levelTwoLoc.contains(triple) || levelThreeLoc.contains(triple) || levelFourLoc.contains(triple) || beaconLoc == triple
+        return (levelOneLoc.contains(triple) || levelTwoLoc.contains(triple) || levelThreeLoc.contains(triple) || levelFourLoc.contains(triple) || beaconLoc == triple) && world == loc.world
     }
 
     fun isAllowPlayer(uuid: UUID): Boolean {
